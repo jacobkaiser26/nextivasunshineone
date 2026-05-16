@@ -7,16 +7,18 @@ import { Resend } from "resend";
 /*  Receives the contact-form POST, validates it, and emails the inquiry to   */
 /*  the business inbox via Resend.                                            */
 /*                                                                            */
-/*  Required environment variables (set in .env.local for dev, Vercel for     */
-/*  production):                                                              */
+/*  Required environment variables (set in .env.local for local dev, Vercel   */
+/*  dashboard → Settings → Environment Variables for production):             */
 /*    RESEND_API_KEY     —  your Resend API key                               */
 /*    CONTACT_TO_EMAIL   —  inbox that receives form submissions              */
-/*    CONTACT_FROM_EMAIL —  sender address (must be on a verified domain;     */
-/*                          use 'onboarding@resend.dev' until your own        */
-/*                          domain is verified inside Resend).                */
+/*    CONTACT_FROM_EMAIL —  sender address (must be a verified Resend domain  */
+/*                          or 'onboarding@resend.dev' until your domain      */
+/*                          is verified inside Resend).                       */
 /* -------------------------------------------------------------------------- */
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Tell Next.js this is a dynamic route — don't try to optimize/prerender it
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
 
 // Minimal HTML-escape so user-supplied data can't inject markup into the email
 function escape(value: unknown): string {
@@ -41,11 +43,12 @@ interface ContactPayload {
 
 export async function POST(req: Request) {
   // -- Environment guard --------------------------------------------------- //
-  if (!process.env.RESEND_API_KEY) {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
     console.error("RESEND_API_KEY is not set");
     return NextResponse.json(
       { error: "Server email is not configured." },
-      { status: 500 }
+      { status: 500 },
     );
   }
 
@@ -77,14 +80,14 @@ export async function POST(req: Request) {
   if (!name.trim() || !email.trim() || !message.trim()) {
     return NextResponse.json(
       { error: "Name, email, and message are required." },
-      { status: 400 }
+      { status: 400 },
     );
   }
 
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
     return NextResponse.json(
       { error: "Please provide a valid email address." },
-      { status: 400 }
+      { status: 400 },
     );
   }
 
@@ -157,11 +160,12 @@ export async function POST(req: Request) {
     </html>
   `;
 
-  // Plain-text fallback (good for spam scores and email clients without HTML)
   const text = [
     `New inquiry — Sunshineone`,
     `From: ${name} <${email}>`,
-    phone.trim() ? `Phone: ${phone} (SMS consent: ${smsConsent ? "yes" : "no"})` : null,
+    phone.trim()
+      ? `Phone: ${phone} (SMS consent: ${smsConsent ? "yes" : "no"})`
+      : null,
     company.trim() ? `Company: ${company}` : null,
     type.trim() ? `Engagement: ${type}` : null,
     budget.trim() ? `Budget: ${budget}` : null,
@@ -175,6 +179,10 @@ export async function POST(req: Request) {
 
   // -- Send ---------------------------------------------------------------- //
   try {
+    // Resend client is instantiated here (per-request) so the module can be
+    // loaded at build time without a valid API key being present.
+    const resend = new Resend(apiKey);
+
     const { error } = await resend.emails.send({
       from,
       to: [to],
@@ -188,7 +196,7 @@ export async function POST(req: Request) {
       console.error("Resend error:", error);
       return NextResponse.json(
         { error: "Could not send your message. Please try again." },
-        { status: 502 }
+        { status: 502 },
       );
     }
 
@@ -197,7 +205,7 @@ export async function POST(req: Request) {
     console.error("Unexpected contact route error:", err);
     return NextResponse.json(
       { error: "Unexpected server error." },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
