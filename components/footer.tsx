@@ -86,15 +86,6 @@ export function Footer() {
                   (352) 702-9127
                 </a>
               </div>
-              <div>
-                <span className="text-ink-3">Business</span> ·{" "}
-                <a
-                  href="tel:+12563478601"
-                  className="transition-colors hover:text-ink"
-                >
-                  +1 (256) 347-8601
-                </a>
-              </div>
               <div className="mt-3 leading-relaxed not-italic">
                 2955 Weiss Lake Blvd
                 <br />

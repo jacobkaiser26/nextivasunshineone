@@ -220,7 +220,6 @@ export default function ContactPage() {
                   <div className="space-y-4">
                     <ContactRow icon={Mail} label="Email" value="contact@sunshineonellc.com" href="mailto:contact@sunshineonellc.com" />
                     <ContactRow icon={Phone} label="Customer support" value="(352) 702-9127" href="tel:+13527029127" />
-                    <ContactRow icon={Phone} label="Business" value="+1 (256) 347-8601" href="tel:+12563478601" />
                     <ContactRow icon={MapPin} label="Office" value="2955 Weiss Lake Blvd, Leesburg, AL 35983" />
                   </div>
                 </div>
