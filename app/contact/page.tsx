@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Halo } from "@/components/ui/halo";
 import { Reveal } from "@/components/ui/reveal";
-import { SmsConsentModal } from "@/components/sms-consent-modal";
 
 interface FormState {
   name: string;
@@ -17,6 +16,7 @@ interface FormState {
   type: string;
   budget: string;
   message: string;
+  smsConsent: boolean;
 }
 
 const initialForm: FormState = {
@@ -27,35 +27,58 @@ const initialForm: FormState = {
   type: "",
   budget: "",
   message: "",
+  smsConsent: false,
 };
 
 export default function ContactPage() {
   const [form, setForm] = useState<FormState>(initialForm);
-  const [consentOpen, setConsentOpen] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [consentError, setConsentError] = useState(false);
 
   const update = (field: keyof FormState) => (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => setForm((f) => ({ ...f, [field]: e.target.value }));
 
-  const sendInquiry = async (smsConsent: boolean) => {
-    setSubmitting(true);
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     setError(null);
+    setConsentError(false);
+
+    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
+      setError("Please fill in name, email, and the message.");
+      return;
+    }
+
+    if (!form.smsConsent) {
+      setConsentError(true);
+      setError("You must check the consent box before submitting.");
+      return;
+    }
+
+    setSubmitting(true);
 
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, smsConsent }),
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          company: form.company,
+          type: form.type,
+          budget: form.budget,
+          message: form.message,
+          smsConsent: form.smsConsent,
+        }),
       });
 
       const data = await res.json().catch(() => ({}));
 
       if (!res.ok) {
         setError(data?.error || "Something went wrong. Please try again.");
-        setSubmitting(false);
         return;
       }
 
@@ -64,31 +87,7 @@ export default function ContactPage() {
       setError("Network error. Please check your connection and try again.");
     } finally {
       setSubmitting(false);
-      setConsentOpen(false);
     }
-  };
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setError(null);
-
-    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
-      setError("Please fill in name, email, and the message.");
-      return;
-    }
-
-    // If a phone number was provided, require explicit SMS consent
-    if (form.phone.trim()) {
-      setConsentOpen(true);
-      return;
-    }
-
-    // No phone → send directly
-    sendInquiry(false);
-  };
-
-  const handleConsent = (consented: boolean) => {
-    sendInquiry(consented);
   };
 
   return (
@@ -150,7 +149,6 @@ export default function ContactPage() {
                         placeholder="+1 (555) 123-4567"
                         value={form.phone}
                         onChange={update("phone")}
-                        hint="Add to receive SMS updates"
                       />
                       <FormField label="Company" name="company" type="text" value={form.company} onChange={update("company")} />
                     </div>
@@ -181,6 +179,45 @@ export default function ContactPage() {
                       onChange={update("message")}
                     />
 
+                    {/* SMS Consent */}
+                    <div className={`flex items-start gap-3 rounded-[10px] border p-4 transition-colors ${consentError ? "border-[#FF6057]/60 bg-[#FF6057]/[0.06]" : "border-line bg-white/[0.025]"}`}>
+                      <input
+                        type="checkbox"
+                        id="smsConsent"
+                        checked={form.smsConsent}
+                        onChange={(e) => {
+                          setForm((f) => ({ ...f, smsConsent: e.target.checked }));
+                          if (e.target.checked) {
+                            setConsentError(false);
+                            setError(null);
+                          }
+                        }}
+                        className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer accent-brand-cyan"
+                      />
+                      <label htmlFor="smsConsent" className="cursor-pointer text-xs leading-relaxed text-ink-3">
+                        <span className="text-sm font-semibold text-ink">
+                          I consent to receive text messages from{" "}
+                          <span className="font-bold text-brand-cyan">SUNSHINEONE LLC</span>{" "}
+                          regarding my inquiry and project updates
+                        </span>
+                        <br />
+                        By checking this box, you agree to receive SMS text messages from{" "}
+                        <span className="font-bold text-brand-cyan">SUNSHINEONE LLC</span>{" "}
+                        at the phone number provided, related to your inquiry, project updates, appointment
+                        coordination, service notifications, and customer support. Message frequency varies.
+                        Message and data rates may apply. Reply HELP for help or STOP to unsubscribe at any
+                        time. Consent is not a condition of any purchase. See our{" "}
+                        <Link href="/privacy" className="text-brand-cyan hover:underline">
+                          Privacy Policy
+                        </Link>
+                        {" "}and{" "}
+                        <Link href="/terms" className="text-brand-cyan hover:underline">
+                          Terms &amp; Conditions
+                        </Link>
+                        {" "}for details on how we handle your information.
+                      </label>
+                    </div>
+
                     {error && (
                       <div className="flex items-start gap-3 rounded-md border border-[#FF6057]/35 bg-[#FF6057]/[0.08] p-4 text-sm text-[#FFB4AF]">
                         <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
@@ -193,20 +230,10 @@ export default function ContactPage() {
                         "Sending…"
                       ) : (
                         <>
-                          Send message <ArrowRight className="h-[18px] w-[18px]" />
+                          Submit inquiry <ArrowRight className="h-[18px] w-[18px]" />
                         </>
                       )}
                     </Button>
-                    <p className="text-center text-xs text-ink-3">
-                      By submitting you agree to our{" "}
-                      <Link href="/privacy" className="text-brand-cyan hover:underline">
-                        Privacy Policy
-                      </Link>{" "}
-                      and{" "}
-                      <Link href="/terms" className="text-brand-cyan hover:underline">
-                        Terms
-                      </Link>.
-                    </p>
                   </form>
                 )}
               </div>
@@ -223,21 +250,6 @@ export default function ContactPage() {
                     <ContactRow icon={MapPin} label="Office" value="2955 Weiss Lake Blvd, Leesburg, AL 35983" />
                   </div>
                 </div>
-                <div className="card-surface p-7">
-                  <Eyebrow className="mb-4">Consultation</Eyebrow>
-                  <h3 className="mb-3 text-[19px] font-semibold tracking-[-0.4px]">
-                    Skip the form.
-                  </h3>
-                  <p className="mb-5 text-sm leading-relaxed text-ink-3">
-                    Book a 30-minute call with a senior engineer who would lead
-                    your engagement.
-                  </p>
-                  <Button asChild variant="ghost" className="w-full">
-                    <Link href="#">
-                      Book a slot <ArrowRight className="h-[18px] w-[18px]" />
-                    </Link>
-                  </Button>
-                </div>
                 <div className="rounded-lg border border-brand-cyan/25 bg-brand-blue/[0.05] p-7">
                   <Eyebrow className="mb-3">Live chat</Eyebrow>
                   <p className="text-sm text-ink-2">
@@ -250,16 +262,6 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-
-      <SmsConsentModal
-        open={consentOpen}
-        onOpenChange={(open) => {
-          if (!submitting) setConsentOpen(open);
-        }}
-        onConsent={handleConsent}
-        phoneNumber={form.phone}
-        submitting={submitting}
-      />
     </>
   );
 }

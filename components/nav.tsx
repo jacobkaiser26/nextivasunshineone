@@ -3,17 +3,15 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ArrowRight, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Logo } from "@/components/ui/logo";
-import { Button } from "@/components/ui/button";
 
 const navItems = [
   { href: "/services", label: "Services" },
   { href: "/work", label: "Work" },
   { href: "/about", label: "About" },
   { href: "/pricing", label: "Pricing" },
-  { href: "/contact", label: "Contact" },
 ];
 
 export function Nav() {
@@ -60,12 +58,12 @@ export function Nav() {
         </div>
 
         <div className="flex items-center gap-2.5">
-          <Button asChild className="hidden sm:inline-flex">
-            <Link href="/contact">
-              Book a consult
-              <ArrowRight className="h-[18px] w-[18px]" />
-            </Link>
-          </Button>
+          <Link
+            href="/contact"
+            className="hidden items-center gap-2 rounded-[10px] bg-brand-gradient px-5 py-2.5 text-sm font-medium text-white shadow-[0_8px_24px_-8px_rgba(0,102,255,0.55),inset_0_1px_0_rgba(255,255,255,0.15)] transition-all hover:-translate-y-px hover:shadow-[0_14px_36px_-8px_rgba(0,102,255,0.65),inset_0_1px_0_rgba(255,255,255,0.2)] sm:inline-flex"
+          >
+            Contact
+          </Link>
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             className="flex h-10 w-10 items-center justify-center rounded-lg border border-line md:hidden"
