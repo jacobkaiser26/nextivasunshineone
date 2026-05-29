@@ -10,7 +10,8 @@ import { Logo } from "@/components/ui/logo";
 const navItems = [
   { href: "/services", label: "Services" },
   { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
+  { href: "/privacy", label: "Privacy" },
+  { href: "/terms", label: "Terms" },
 ];
 
 export function Nav() {
@@ -90,6 +91,13 @@ export function Nav() {
               {item.label}
             </Link>
           ))}
+          <Link
+            href="/contact"
+            onClick={() => setMobileOpen(false)}
+            className="rounded-lg px-3.5 py-3 text-sm font-medium text-ink-2 transition-colors hover:bg-white/5 hover:text-ink"
+          >
+            Contact
+          </Link>
         </div>
       )}
     </nav>
