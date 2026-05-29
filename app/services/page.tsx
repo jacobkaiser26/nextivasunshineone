@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ChevronRight, ArrowRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Eyebrow } from "@/components/ui/eyebrow";
@@ -15,36 +15,107 @@ import {
 import { FinalCTA } from "@/components/sections/final-cta";
 
 export const metadata: Metadata = {
-  title: "Services",
+  title: "Services — Sunshineone LLC",
   description:
-    "Sunshineone services — AI, custom software, cloud, DevOps, cybersecurity, mobile, design, and digital transformation.",
+    "Sunshineone LLC is a software development company in Leesburg, Alabama. We build custom websites, mobile apps, AI tools, and cloud systems for our clients.",
 };
 
 const services = [
-  { num: "01", title: "AI & Automation", body: "Production-grade LLM systems, retrieval pipelines, agent workflows, and intelligent process automation — built with evals, guardrails, and cost telemetry from day one.", tags: ["RAG", "Agents", "Evals", "Vector DBs", "Anthropic"] },
-  { num: "02", title: "Custom Software Development", body: "Enterprise platforms, internal tools, and product engineering — TypeScript, Python, Go. We staff full-stack teams that work like product engineers, not contractors.", tags: ["TypeScript", "Next.js", "Python", "Go", "Postgres"] },
-  { num: "03", title: "Web Development", body: "Marketing sites, dashboards, and customer-facing applications built for speed, accessibility, and SEO. Sub-second TTFB, perfect Lighthouse scores.", tags: ["Next.js", "React", "Svelte", "Tailwind"] },
-  { num: "04", title: "Mobile Apps", body: "iOS and Android — native (Swift / Kotlin) or cross-platform (React Native, Flutter). Tightly integrated with cloud backends and offline-first when needed.", tags: ["Swift", "Kotlin", "React Native", "Flutter"] },
-  { num: "05", title: "DevOps & Cloud Engineering", body: "Cloud architecture (AWS, GCP, Azure), Kubernetes operations, CI/CD pipelines, IaC, observability. We bring SRE discipline to teams that need it.", tags: ["K8s", "Terraform", "AWS", "GCP", "Datadog"] },
-  { num: "06", title: "Cybersecurity", body: "Threat modeling, SOC 2 / ISO 27001 readiness, pen testing, IAM architecture, and continuous security across cloud and application layers.", tags: ["SOC 2", "Pen Test", "IAM", "SAST/DAST"] },
-  { num: "07", title: "UI/UX Design", body: "Product design, design systems, and brand identity. Our designers ship code-level specs, not pretty pictures. Engineers love working with them.", tags: ["Figma", "Design Systems", "Prototyping"] },
-  { num: "08", title: "SaaS Product Development", body: "From validated idea to launched product. Multi-tenant architecture, billing, auth, observability — the platform plumbing that takes most teams a year, in a quarter.", tags: ["Multi-tenant", "Stripe", "Auth"] },
-  { num: "09", title: "API & Integrations", body: "REST, GraphQL, gRPC, event-driven architectures, and integrations across SaaS ecosystems. We design APIs your future self won't curse.", tags: ["REST", "GraphQL", "gRPC", "Webhooks"] },
-  { num: "10", title: "IT & Digital Transformation Consulting", body: "Technology strategy, architectural audits, fractional CTO, and roadmaps for organizations modernizing for the AI era. Senior leadership, not McKinsey deck-builders.", tags: ["Strategy", "Audits", "Fractional CTO"] },
-];
-
-const faqs = [
-  { q: "How quickly can you start?", a: "Discovery typically begins within two weeks of contract signature. For urgent engagements, we maintain a small bench for emergency platform work." },
-  { q: "Do you work with existing engineering teams?", a: "Yes — about half our engagements are augmenting in-house teams. We adapt to your tooling, your CI, your review process. We're additive, not disruptive." },
-  { q: "Can you work under our compliance framework?", a: "We routinely operate under SOC 2, HIPAA, GDPR, PCI, and FedRAMP environments. We provide BAAs and DPAs as standard for engagements that require them." },
-  { q: "What happens after the engagement ends?", a: "Two paths. Either we hand off to your team with runbooks, ADRs, and training — or we transition to a monthly retainer to keep operating and evolving what we built. Your call." },
+  {
+    num: "01",
+    title: "Website and Web App Development",
+    body: "We build websites and web applications. This includes business websites, online portals, internal tools, and dashboards. We use modern frameworks like Next.js and React.",
+    tags: ["Next.js", "React", "TypeScript"],
+  },
+  {
+    num: "02",
+    title: "Mobile App Development",
+    body: "We build mobile apps for iPhone and Android. We can build native apps with Swift or Kotlin, or cross-platform apps with React Native or Flutter.",
+    tags: ["iOS", "Android", "React Native"],
+  },
+  {
+    num: "03",
+    title: "AI and Chatbot Development",
+    body: "We build AI tools for businesses. This includes chatbots that answer customer questions, document automation tools, and software that helps employees do repetitive tasks faster.",
+    tags: ["Chatbots", "Document AI", "Automation"],
+  },
+  {
+    num: "04",
+    title: "Cloud Setup and Hosting",
+    body: "We set up servers and hosting on Amazon Web Services, Google Cloud, or Microsoft Azure. We make sure your software runs reliably and that backups, monitoring, and security are in place.",
+    tags: ["AWS", "Google Cloud", "Azure"],
+  },
+  {
+    num: "05",
+    title: "Cybersecurity Help",
+    body: "We help businesses protect their systems. This includes basic security reviews, secure login setup, and helping clients prepare for security certifications like SOC 2.",
+    tags: ["Security review", "Login security", "SOC 2 prep"],
+  },
+  // Cards 06–10 commented out for 10DLC compliance
+  // {
+  //   num: "06",
+  //   title: "UI/UX Design",
+  //   body: "Product design, design systems, and brand identity. Our designers ship code-level specs, not pretty pictures. Engineers love working with them.",
+  //   tags: ["Figma", "Design Systems", "Prototyping"],
+  // },
+  // {
+  //   num: "07",
+  //   title: "SaaS Product Development",
+  //   body: "From validated idea to launched product. Multi-tenant architecture, billing, auth, observability — the platform plumbing that takes most teams a year, in a quarter.",
+  //   tags: ["Multi-tenant", "Stripe", "Auth"],
+  // },
+  // {
+  //   num: "08",
+  //   title: "API & Integrations",
+  //   body: "REST, GraphQL, gRPC, event-driven architectures, and integrations across SaaS ecosystems. We design APIs your future self won't curse.",
+  //   tags: ["REST", "GraphQL", "gRPC", "Webhooks"],
+  // },
+  // {
+  //   num: "09",
+  //   title: "Custom Software Development",
+  //   body: "Enterprise platforms, internal tools, and product engineering — TypeScript, Python, Go. We staff full-stack teams that work like product engineers, not contractors.",
+  //   tags: ["TypeScript", "Next.js", "Python", "Go", "Postgres"],
+  // },
+  // {
+  //   num: "10",
+  //   title: "IT & Digital Transformation Consulting",
+  //   body: "Technology strategy, architectural audits, fractional CTO, and roadmaps for organizations modernizing for the AI era. Senior leadership, not McKinsey deck-builders.",
+  //   tags: ["Strategy", "Audits", "Fractional CTO"],
+  // },
 ];
 
 const processSteps = [
-  { title: "Discover", body: "Stakeholder interviews, systems audit, success metrics. Output: a north-star and phased plan in 1–2 weeks." },
-  { title: "Design", body: "Architecture, UX, data flows mapped end-to-end. Risk surfaced early, tradeoffs documented in ADRs." },
-  { title: "Build", body: "Senior engineers ship in 2-week sprints with continuous demos. Tested, instrumented, reviewed from day one." },
-  { title: "Scale", body: "Production hardening, observability, knowledge transfer. We hand off cleanly — or stay as your platform partner." },
+  {
+    title: "Talk",
+    body: "You contact us and tell us what you need. We schedule a call and ask questions to understand your project.",
+  },
+  {
+    title: "Plan",
+    body: "We write up a plan with timeline, cost, and what will be delivered. You review and approve before any work starts.",
+  },
+  {
+    title: "Build",
+    body: "We sign a contract and start the work. You get progress updates every two weeks.",
+  },
+  {
+    title: "Support",
+    body: "After launch, we can help with maintenance, updates, and answering questions if you need it.",
+  },
+];
+
+const faqs = [
+  {
+    q: "How long does a project take?",
+    a: "It depends on the size of the project. Small projects can take a few weeks. Larger projects take a few months. We always tell you the timeline before we start.",
+  },
+  {
+    q: "Do you work with existing teams or do you replace them?",
+    a: "Either one. Some clients have their own developers and we work alongside them. Other clients want us to handle everything. We are flexible.",
+  },
+  {
+    q: "What happens after the project is done?",
+    a: "We hand off the code, documentation, and access. If you want ongoing support, we offer a maintenance arrangement. If you don't, we step away cleanly.",
+  },
 ];
 
 export default function ServicesPage() {
@@ -61,18 +132,18 @@ export default function ServicesPage() {
             </div>
           </Reveal>
           <Reveal delay={0.05}>
-            <Eyebrow className="mb-6">What we do</Eyebrow>
+            <Eyebrow className="mb-6">Our Services</Eyebrow>
           </Reveal>
           <Reveal delay={0.1}>
             <h1 className="h-display mb-7">
-              Ten capabilities. <span className="accent-text">One standard.</span>
+              What We Do for Our Clients
             </h1>
           </Reveal>
           <Reveal delay={0.15}>
             <p className="lede max-w-[60ch]">
-              Every service we offer is delivered by senior engineers and held
-              to the same engineering bar. No junior staffing, no handoff
-              factories, no &quot;discovery phase&quot; theatre.
+              Sunshineone is a software development company. We build websites,
+              mobile apps, AI tools, and cloud systems for businesses that hire
+              us directly. Below is what we offer.
             </p>
           </Reveal>
         </div>
@@ -106,16 +177,10 @@ export default function ServicesPage() {
       {/* PROCESS */}
       <section className="py-28">
         <div className="container">
-          <div className="mb-16 grid grid-cols-1 items-end gap-6 lg:grid-cols-2 lg:gap-16">
+          <div className="mb-16">
             <Reveal>
               <Eyebrow className="mb-4">How we engage</Eyebrow>
-              <h2 className="h1">A predictable process for unpredictable problems.</h2>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <p className="lede lg:ml-auto lg:max-w-[460px]">
-                Same four phases across every engagement, scaled to the
-                complexity of the work. Transparent at every step.
-              </p>
+              <h2 className="h1">How a Project Works</h2>
             </Reveal>
           </div>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -136,7 +201,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* PRICING APPROACH */}
+      {/* PRICING APPROACH — commented out for 10DLC compliance
       <section className="py-28">
         <div className="container">
           <Reveal>
@@ -176,6 +241,7 @@ export default function ServicesPage() {
           </Reveal>
         </div>
       </section>
+      */}
 
       {/* FAQ */}
       <section className="py-28">
@@ -183,7 +249,7 @@ export default function ServicesPage() {
           <Reveal>
             <div className="mb-12 text-center">
               <Eyebrow centered className="mb-4">FAQ</Eyebrow>
-              <h2 className="h1">Common questions about engagements.</h2>
+              <h2 className="h1">Common questions.</h2>
             </div>
           </Reveal>
           <Reveal>
@@ -201,13 +267,15 @@ export default function ServicesPage() {
 
       <FinalCTA
         eyebrow="Ready to talk"
-        title={<>A 30-min call. <span className="accent-text">Real engineers.</span></>}
-        description="No sales engineers, no qualification gauntlets. Just a senior engineer who'll listen to your problem."
+        title="Have a Project in Mind?"
+        description="Send us a message and a real engineer will get back to you within one business day."
+        primary={{ href: "/contact", label: "Contact us" }}
       />
     </>
   );
 }
 
+// ApproachCard kept for reference — used by the commented-out pricing section
 function ApproachCard({ label, body }: { label: string; body: string }) {
   return (
     <div className="rounded-lg border border-line bg-white/5 p-6">

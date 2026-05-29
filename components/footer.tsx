@@ -12,12 +12,12 @@ const services = [
 
 const company = [
   { href: "/about", label: "About" },
-  { href: "/work", label: "Case studies" },
   { href: "/contact", label: "Contact" },
+  // { href: "/work", label: "Case studies" },  // hidden for 10DLC compliance
 ];
 
 const resources = [
-  { href: "/pricing", label: "Pricing" },
+  // { href: "/pricing", label: "Pricing" },  // hidden for 10DLC compliance
   { href: "#", label: "Security" },
   { href: "#", label: "Brand" },
 ];
@@ -64,9 +64,9 @@ export function Footer() {
           <div className="max-w-sm lg:col-span-1">
             <Logo className="mb-5" />
             <p className="mb-6 text-sm leading-relaxed text-ink-3">
-              A software consulting and digital transformation studio. We help
-              ambitious teams build, scale, and automate the systems that move
-              them forward.
+              Sunshineone LLC is a software development company based in
+              Leesburg, Alabama. We build websites, mobile apps, AI tools, and
+              cloud systems for our clients.
             </p>
             <div className="space-y-1.5 font-mono text-[11.5px] tracking-wide text-muted">
               <div>

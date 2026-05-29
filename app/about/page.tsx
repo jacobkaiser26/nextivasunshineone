@@ -4,37 +4,57 @@ import { ChevronRight } from "lucide-react";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Halo } from "@/components/ui/halo";
 import { Reveal } from "@/components/ui/reveal";
-import { Counter } from "@/components/ui/counter";
 import { FinalCTA } from "@/components/sections/final-cta";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "About — Sunshineone LLC",
   description:
-    "Sunshineone is a software consulting and digital transformation studio. Meet the team and the principles behind the work.",
+    "Sunshineone LLC is a software development company in Leesburg, Alabama. We build custom websites, mobile apps, AI tools, and cloud systems for our clients.",
 };
 
 const values = [
-  { title: "Senior or nothing", body: "Every engineer who touches client code has shipped production systems at scale. No bait-and-switch staffing." },
-  { title: "Outcomes over hours", body: "We bill for results, not timesheets. Engagements are scoped to milestones our clients can defend to a board." },
-  { title: "Decisions in writing", body: "Every architectural call is documented as an ADR. Future-you should never have to guess why past-us made a choice." },
-  { title: "Boring where it counts", body: "We don't chase frameworks. We pick the boring, battle-tested stack for everything that doesn't need to be novel." },
-  { title: "Ship to learn", body: "Production teaches things a design doc can't. We get to real users early and adjust faster than the competition." },
-  { title: "Leave it better", body: "When we hand off, your team should be more capable than we found them. Knowledge transfer is part of the build." },
+  {
+    title: "Honest about scope",
+    body: "We tell you what we can and cannot do before the project starts. We do not overpromise.",
+  },
+  {
+    title: "Senior engineers only",
+    body: "The person you talk to is the person writing the code. We do not hand work off to junior staff after the contract is signed.",
+  },
+  {
+    title: "Written plans",
+    body: "Every project starts with a written plan that lists what we will build, how long it will take, and what it will cost.",
+  },
+  {
+    title: "Clean handoffs",
+    body: "When the project is done, you get the code, the documentation, and access to everything. No lock-in.",
+  },
+  // Values 05 and 06 commented out for 10DLC compliance
+  // {
+  //   title: "Ship to learn",
+  //   body: "Production teaches things a design doc can't. We get to real users early and adjust faster than the competition.",
+  // },
+  // {
+  //   title: "Leave it better",
+  //   body: "When we hand off, your team should be more capable than we found them. Knowledge transfer is part of the build.",
+  // },
 ];
 
-const timeline = [
-  { year: "2019", title: "Founded", body: "Two engineers, one thesis: senior teams, embedded delivery." },
-  { year: "2021", title: "First enterprise client", body: "Helix Bank. Underwriting platform shipped in 16 weeks." },
-  { year: "2023", title: "AI practice launched", body: "Dedicated team for production LLM systems. First 10 wins inside a quarter." },
-  { year: "2026", title: "120+ engagements", body: "Teams across NA, EU, and South Asia. Same senior-first model." },
-];
+// TIMELINE — commented out for 10DLC compliance (references fictional client and dates)
+// const timeline = [
+//   { year: "2019", title: "Founded", body: "Two engineers, one thesis: senior teams, embedded delivery." },
+//   { year: "2021", title: "First enterprise client", body: "Helix Bank. Underwriting platform shipped in 16 weeks." },
+//   { year: "2023", title: "AI practice launched", body: "Dedicated team for production LLM systems. First 10 wins inside a quarter." },
+//   { year: "2026", title: "120+ engagements", body: "Teams across NA, EU, and South Asia. Same senior-first model." },
+// ];
 
-const leaders = [
-  { initials: "AR", name: "Aiden Rao", role: "Co-founder · CEO", bio: "Previously staff engineer at Stripe. Loves distributed systems and bad coffee." },
-  { initials: "ML", name: "Mira Leclerc", role: "Co-founder · CTO", bio: "Ex-Anthropic ML platform. Built the company's eval-first AI delivery framework." },
-  { initials: "JT", name: "Jonas Thurman", role: "VP · Platform", bio: "Cloud architect with FedRAMP, HIPAA, and SOC 2 reps. Quiet, exacting." },
-  { initials: "SO", name: "Sade Okonkwo", role: "VP · Design", bio: "Design systems at scale. Believes constraint is the parent of clarity." },
-];
+// LEADERSHIP — commented out for 10DLC compliance (fictional names — not real people)
+// const leaders = [
+//   { initials: "AR", name: "Aiden Rao", role: "Co-founder · CEO", bio: "Previously staff engineer at Stripe. Loves distributed systems and bad coffee." },
+//   { initials: "ML", name: "Mira Leclerc", role: "Co-founder · CTO", bio: "Ex-Anthropic ML platform. Built the company's eval-first AI delivery framework." },
+//   { initials: "JT", name: "Jonas Thurman", role: "VP · Platform", bio: "Cloud architect with FedRAMP, HIPAA, and SOC 2 reps. Quiet, exacting." },
+//   { initials: "SO", name: "Sade Okonkwo", role: "VP · Design", bio: "Design systems at scale. Believes constraint is the parent of clarity." },
+// ];
 
 export default function AboutPage() {
   return (
@@ -47,47 +67,45 @@ export default function AboutPage() {
             <Breadcrumbs items={[{ href: "/", label: "Home" }, { label: "About" }]} />
           </Reveal>
           <Reveal delay={0.05}>
-            <Eyebrow className="mb-6">The company</Eyebrow>
+            <Eyebrow className="mb-6">About Us</Eyebrow>
           </Reveal>
           <Reveal delay={0.1}>
             <h1 className="h-display mb-7">
-              We&apos;re engineers who happened to{" "}
-              <span className="accent-text">start a firm.</span>
+              About Sunshineone
             </h1>
           </Reveal>
           <Reveal delay={0.15}>
             <p className="lede max-w-[60ch]">
-              Sunshineone was founded by senior engineers who&apos;d watched too
-              many transformation programs fail at the seams between strategy
-              and execution. We built the firm we&apos;d have wanted as
-              clients: small, senior, accountable, technical.
+              Sunshineone LLC is a small software development company based in
+              Leesburg, Alabama. We build custom software, websites, mobile
+              apps, and AI tools for businesses across the United States.
             </p>
           </Reveal>
         </div>
       </section>
 
-      {/* STORY + MISSION/VISION */}
+      {/* WHO WE ARE */}
       <section className="py-28">
         <div className="container">
-          <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
+          <div className="grid grid-cols-1 items-start gap-16 lg:grid-cols-2">
             <Reveal>
               <Eyebrow className="mb-4">01 · Our story</Eyebrow>
-              <h2 className="h1 mb-6">
-                Founded in 2019. Built around a thesis that hasn&apos;t changed.
-              </h2>
+              <h2 className="h1 mb-6">Who We Are</h2>
               <p className="lede mb-5">
-                Most &quot;digital transformation&quot; fails because it&apos;s
-                run by people who don&apos;t ship code. We started Sunshineone with
-                a different premise: hire only senior engineers, deliver in
-                two-week increments, and stay accountable to production
-                outcomes — not slide decks.
+                Sunshineone LLC is a registered Alabama limited liability
+                company. We work with businesses that need custom software
+                built. Our clients come to us through referrals or by
+                contacting us directly through this website.
               </p>
               <p className="lede">
-                Five years and 120+ engagements later, the thesis is intact. The
-                work has only gotten more interesting as AI rewires what
-                software can do.
+                We are a small team. We do not run advertising campaigns. We do
+                not buy or sell customer lists. We do not generate leads for
+                other companies. We build software for the clients who hire us,
+                and we use SMS only to communicate with those clients about
+                their projects.
               </p>
             </Reveal>
+            {/* Mission/Vision callouts — commented out for 10DLC compliance
             <Reveal delay={0.1}>
               <div className="space-y-5">
                 <div className="card-surface p-8">
@@ -107,6 +125,7 @@ export default function AboutPage() {
                 </div>
               </div>
             </Reveal>
+            */}
           </div>
         </div>
       </section>
@@ -117,10 +136,10 @@ export default function AboutPage() {
           <Reveal>
             <div className="mb-16">
               <Eyebrow className="mb-4">02 · How we operate</Eyebrow>
-              <h2 className="h1">Six values, non-negotiable.</h2>
+              <h2 className="h1">How We Work</h2>
             </div>
           </Reveal>
-          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-2">
             {values.map((v, i) => (
               <Reveal key={v.title} delay={i * 0.06}>
                 <div className="card-surface p-8">
@@ -138,7 +157,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* TIMELINE */}
+      {/* TIMELINE — commented out for 10DLC compliance (fictional client references)
       <section className="py-28">
         <div className="container">
           <div className="mb-16 grid grid-cols-1 items-end gap-6 lg:grid-cols-2 lg:gap-16">
@@ -175,8 +194,9 @@ export default function AboutPage() {
           </Reveal>
         </div>
       </section>
+      */}
 
-      {/* LEADERSHIP */}
+      {/* LEADERSHIP — commented out for 10DLC compliance (fictional names, not real people)
       <section className="py-28">
         <div className="container">
           <Reveal>
@@ -205,8 +225,32 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+      */}
 
-      {/* GLOBAL PRESENCE */}
+      {/* CONTACT (replaces leadership section) */}
+      <section className="py-28">
+        <div className="container">
+          <Reveal>
+            <div className="mb-8">
+              <Eyebrow className="mb-4">03 · Contact</Eyebrow>
+              <h2 className="h1 mb-6">Contact</h2>
+              <p className="lede max-w-[60ch]">
+                Sunshineone LLC is owned and operated by James E Soden. For
+                project inquiries, please use the contact form or email{" "}
+                <a
+                  href="mailto:contact@sunshineonellc.com"
+                  className="text-brand-cyan hover:underline"
+                >
+                  contact@sunshineonellc.com
+                </a>
+                .
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* GLOBAL PRESENCE — commented out for 10DLC compliance (claimed offices in SF, London, Berlin, Singapore — not accurate)
       <section className="py-28">
         <div className="container">
           <Reveal>
@@ -249,13 +293,55 @@ export default function AboutPage() {
           </Reveal>
         </div>
       </section>
+      */}
+
+      {/* WHERE WE ARE (replaces Global Presence) */}
+      <section className="py-28">
+        <div className="container">
+          <Reveal>
+            <div className="relative overflow-hidden rounded-xl border border-line bg-gradient-to-br from-bg-2 to-[#051026] p-10 lg:p-16">
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute -right-[10%] -top-[50%] h-[600px] w-[600px] blur-[60px]"
+                style={{
+                  background:
+                    "radial-gradient(circle, rgba(0,102,255,0.25), transparent 60%)",
+                }}
+              />
+              <div className="relative">
+                <Eyebrow className="mb-4">04 · Location</Eyebrow>
+                <h2 className="h1 mb-6">Where We Are</h2>
+                <p className="lede max-w-[60ch]">
+                  Sunshineone LLC is based in Leesburg, Alabama. Our office
+                  address is 2955 Weiss Lake Blvd, Leesburg, AL 35983. We work
+                  with clients across the United States.
+                </p>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* STATS BLOCK — commented out for 10DLC compliance (all values were zero counters)
+      <section className="py-20">
+        <div className="container">
+          <Reveal>
+            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              <PresenceStat value={0} label="Engineers" />
+              <PresenceStat value={0} label="Countries" />
+              <PresenceStat value={0} suffix="%" label="Retention rate" />
+              <PresenceStat value={0} label="Avg years experience" />
+            </div>
+          </Reveal>
+        </div>
+      </section>
+      */}
 
       <FinalCTA
         eyebrow="Work with us"
-        title={<>Bring us the <span className="accent-text">hard problem.</span></>}
-        description="If you're solving something genuinely difficult, we want to hear about it."
-        primary={{ href: "/contact", label: "Get in touch" }}
-        secondary={{ href: "/work", label: "See our work" }}
+        title="Want to Work With Us?"
+        description="If you have a software project, send us a message. We will get back to you within one business day."
+        primary={{ href: "/contact", label: "Contact us" }}
       />
     </>
   );
@@ -280,6 +366,7 @@ function Breadcrumbs({ items }: { items: { href?: string; label: string }[] }) {
   );
 }
 
+// OfficeChip and PresenceStat kept for reference — used by the commented-out global presence section
 function OfficeChip({ region, location }: { region: string; location: string }) {
   return (
     <div className="rounded-md border border-line p-5">
@@ -303,7 +390,7 @@ function PresenceStat({
   return (
     <div className="rounded-lg border border-line bg-white/[0.025] p-7">
       <div className="accent-text text-[clamp(36px,4.5vw,52px)] font-bold leading-none tracking-[-2px]">
-        <Counter value={value} suffix={suffix} />
+        {value}{suffix}
       </div>
       <div className="mt-3 font-mono text-[11px] uppercase tracking-[1.5px] text-ink-3">
         {label}

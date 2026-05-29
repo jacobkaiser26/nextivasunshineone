@@ -9,9 +9,8 @@ import { Logo } from "@/components/ui/logo";
 
 const navItems = [
   { href: "/services", label: "Services" },
-  { href: "/work", label: "Work" },
   { href: "/about", label: "About" },
-  { href: "/pricing", label: "Pricing" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export function Nav() {

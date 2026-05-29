@@ -9,20 +9,20 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.sunshineonellc.com"),
   title: {
-    default: "Sunshineone — Engineering Intelligent Growth",
-    template: "%s — Sunshineone",
+    default: "Sunshineone LLC — Software Development and AI Services",
+    template: "%s — Sunshineone LLC",
   },
   description:
-    "Sunshineone is a software consulting and digital transformation studio. We help ambitious teams build, scale, and automate the systems that move their business forward — from AI products to enterprise platforms.",
+    "Sunshineone LLC is a software development company in Leesburg, Alabama. We build custom websites, mobile apps, AI tools, and cloud systems for our clients.",
   keywords: [
-    "software consulting",
-    "AI automation",
-    "digital transformation",
-    "DevOps",
-    "cloud engineering",
+    "software development",
+    "web development",
+    "mobile app development",
+    "AI development",
+    "cloud hosting",
     "cybersecurity",
-    "SaaS development",
     "custom software",
+    "Alabama",
   ],
   authors: [{ name: "SUNSHINEONE LLC" }],
   creator: "SUNSHINEONE LLC",
@@ -30,16 +30,16 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://www.sunshineonellc.com",
-    title: "Sunshineone — Engineering Intelligent Growth",
+    title: "Sunshineone LLC — Software Development and AI Services",
     description:
-      "Software consulting and digital transformation for AI, cloud, DevOps, and enterprise SaaS.",
-    siteName: "Sunshineone",
+      "Sunshineone LLC is a software development company in Leesburg, Alabama. We build custom websites, mobile apps, AI tools, and cloud systems for our clients.",
+    siteName: "Sunshineone LLC",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sunshineone — Engineering Intelligent Growth",
+    title: "Sunshineone LLC — Software Development and AI Services",
     description:
-      "Software consulting and digital transformation for AI, cloud, DevOps, and enterprise SaaS.",
+      "Sunshineone LLC is a software development company in Leesburg, Alabama. We build custom websites, mobile apps, AI tools, and cloud systems for our clients.",
   },
   icons: {
     icon: [

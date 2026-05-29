@@ -1,14 +1,18 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Sunshineone LLC — Software Development and AI Services",
+  description:
+    "Sunshineone LLC is a software development company in Leesburg, Alabama. We build custom websites, mobile apps, AI tools, and cloud systems for our clients.",
+};
 import {
   ArrowRight,
-  Check,
   Sparkles,
   Code2,
   Cloud,
   Shield,
   Smartphone,
-  Globe,
-  Quote,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Eyebrow } from "@/components/ui/eyebrow";
@@ -26,53 +30,53 @@ import { FinalCTA } from "@/components/sections/final-cta";
 
 const services = [
   {
-    icon: Sparkles,
-    title: "AI & Automation",
-    body: "Production-grade LLM systems, agentic workflows, intelligent pipelines, and process automation that compound efficiency over time.",
-  },
-  {
     icon: Code2,
-    title: "Custom Software Engineering",
-    body: "Enterprise-grade applications, internal tools, and platforms — engineered with the discipline of a product company and the velocity of a startup.",
-  },
-  {
-    icon: Cloud,
-    title: "DevOps & Cloud Engineering",
-    body: "Resilient infrastructure on AWS, GCP, and Azure. CI/CD pipelines, observability, IaC, and Kubernetes operations that scale predictably.",
-  },
-  {
-    icon: Shield,
-    title: "Cybersecurity",
-    body: "Threat modeling, SOC 2 readiness, penetration testing, identity architecture, and continuous security across cloud and application layers.",
+    title: "Website and Application Development",
+    body: "We build websites and web applications for businesses. This includes online portals, internal tools, and customer-facing websites.",
   },
   {
     icon: Smartphone,
     title: "Mobile App Development",
-    body: "iOS, Android, and cross-platform apps with React Native and Flutter — fast, accessible, and tightly integrated with backend systems.",
+    body: "We build mobile apps for iPhone and Android. We work with clients from the design stage through launch on the app stores.",
   },
   {
-    icon: Globe,
-    title: "Digital Transformation",
-    body: "Strategy and execution for organizations modernizing legacy stacks, data infrastructure, and operating models for the AI era.",
+    icon: Sparkles,
+    title: "AI and Chatbot Development",
+    body: "We build AI tools for businesses. This includes chatbots that answer customer questions, software that reads and summarizes documents, and tools that help employees do repetitive work faster.",
   },
+  {
+    icon: Cloud,
+    title: "Cloud Setup and Hosting",
+    body: "We set up servers and cloud hosting on Amazon Web Services, Google Cloud, and Microsoft Azure. We make sure the software we build runs reliably after launch.",
+  },
+  {
+    icon: Shield,
+    title: "Cybersecurity Services",
+    body: "We help businesses protect their systems. This includes security reviews, password and login setup, and helping clients prepare for security audits like SOC 2.",
+  },
+  // {
+  //   icon: Globe,
+  //   title: "Digital Transformation",
+  //   body: "Strategy and execution for organizations modernizing legacy stacks, data infrastructure, and operating models for the AI era.",
+  // },
 ];
 
 const processSteps = [
   {
-    title: "Discover",
-    body: "We embed with stakeholders, audit systems, and define success metrics. Output: a clear north-star and a phased plan.",
+    title: "Contact",
+    body: "You contact us and tell us what you need built.",
   },
   {
-    title: "Design",
-    body: "Architecture, UX, and data flows mapped end-to-end. Risk surfaced early, tradeoffs documented, decisions logged.",
+    title: "Plan",
+    body: "We talk through the project on a call and write up a plan together.",
   },
   {
     title: "Build",
-    body: "Senior engineers ship in 2-week sprints with continuous demos. Code reviewed, tested, and instrumented from day one.",
+    body: "We sign a contract and start the work. You get updates every two weeks until the project is finished.",
   },
   {
-    title: "Scale",
-    body: "Production hardening, observability, and a handoff plan — or we stay on as your platform partner. Your choice.",
+    title: "Support",
+    body: "After launch, we can keep helping with maintenance and support if you need it.",
   },
 ];
 
@@ -82,45 +86,47 @@ const techStack = [
   "AWS", "GCP", "Azure", "Snowflake", "Anthropic", "LangGraph",
 ];
 
-const industries = [
-  { num: "/ 01", name: "Financial Services", sub: "Underwriting · Risk · Trading" },
-  { num: "/ 02", name: "Healthcare", sub: "HIPAA · EHR · Clinical AI" },
-  { num: "/ 03", name: "Logistics", sub: "Routing · OMS · Fleet" },
-  { num: "/ 04", name: "Retail & E-com", sub: "Storefronts · Inventory · CDP" },
-  { num: "/ 05", name: "Real Estate", sub: "Proptech · Marketplaces" },
-  { num: "/ 06", name: "Education", sub: "LMS · Adaptive learning" },
-  { num: "/ 07", name: "Government", sub: "FedRAMP · Citizen services" },
-  { num: "/ 08", name: "Startups", sub: "MVPs · Scale-up engineering" },
-];
+// INDUSTRIES — commented out for 10DLC compliance
+// const industries = [
+//   { num: "/ 01", name: "Financial Services", sub: "Underwriting · Risk · Trading" },
+//   { num: "/ 02", name: "Healthcare", sub: "HIPAA · EHR · Clinical AI" },
+//   { num: "/ 03", name: "Logistics", sub: "Routing · OMS · Fleet" },
+//   { num: "/ 04", name: "Retail & E-com", sub: "Storefronts · Inventory · CDP" },
+//   { num: "/ 05", name: "Real Estate", sub: "Proptech · Marketplaces" },
+//   { num: "/ 06", name: "Education", sub: "LMS · Adaptive learning" },
+//   { num: "/ 07", name: "Government", sub: "FedRAMP · Citizen services" },
+//   { num: "/ 08", name: "Startups", sub: "MVPs · Scale-up engineering" },
+// ];
 
-const testimonials = [
-  {
-    quote:
-      "Sunshineone wasn't a vendor — they operated like our most senior engineering team. They shipped what we believed was a year of work in 14 weeks.",
-    name: "Mira Kapoor",
-    role: "VP Engineering · Helix",
-    initials: "MK",
-  },
-  {
-    quote:
-      "Most 'AI consultants' deliver demos. Sunshineone delivered a production system with evals, cost ceilings, and a runbook our on-call team actually uses.",
-    name: "Daniel Reyes",
-    role: "CTO · Vantage Health",
-    initials: "DR",
-  },
-  {
-    quote:
-      "They asked harder questions than our own product team. By week three we had clarity we'd been chasing for a year.",
-    name: "Aiyana Stone",
-    role: "COO · Octo Logistics",
-    initials: "AS",
-  },
-];
+// TESTIMONIALS — commented out for 10DLC compliance
+// const testimonials = [
+//   {
+//     quote:
+//       "Sunshineone wasn't a vendor — they operated like our most senior engineering team. They shipped what we believed was a year of work in 14 weeks.",
+//     name: "Mira Kapoor",
+//     role: "VP Engineering · Helix",
+//     initials: "MK",
+//   },
+//   {
+//     quote:
+//       "Most 'AI consultants' deliver demos. Sunshineone delivered a production system with evals, cost ceilings, and a runbook our on-call team actually uses.",
+//     name: "Daniel Reyes",
+//     role: "CTO · Vantage Health",
+//     initials: "DR",
+//   },
+//   {
+//     quote:
+//       "They asked harder questions than our own product team. By week three we had clarity we'd been chasing for a year.",
+//     name: "Aiyana Stone",
+//     role: "COO · Octo Logistics",
+//     initials: "AS",
+//   },
+// ];
 
 const faqs = [
   {
     q: "How is Sunshineone different from a traditional agency?",
-    a: "We staff exclusively senior engineers and operate as embedded teams, not handoff factories. You get principal-level architects and engineers in your standups — the same people who write the code review the design.",
+    a: "We are a small team of senior engineers. You work directly with the people writing the code, not with a project manager who passes messages along.",
   },
   {
     q: "What's a typical engagement length?",
@@ -153,33 +159,30 @@ export default function Home() {
           </Reveal>
           <Reveal delay={0.05}>
             <h1 className="h-display mb-7 max-w-[18ch]">
-              Engineering
-              <br />
-              <span className="accent-text">intelligent growth</span>
-              <br />
-              for modern enterprises.
+              Sunshineone — Software Development and AI Services
             </h1>
           </Reveal>
           <Reveal delay={0.12}>
             <p className="lede mb-10">
-              Sunshineone is a software consulting and digital transformation
-              studio. We help ambitious teams build, scale, and automate the
-              systems that move their business forward — from AI products to
-              enterprise platforms.
+              We are a software development company based in Leesburg, Alabama.
+              We build custom websites, mobile apps, and business software for
+              our clients. We also build AI tools like chatbots and document
+              automation.
             </p>
           </Reveal>
           <Reveal delay={0.2}>
             <div className="mb-20 flex flex-wrap gap-3">
               <Button asChild size="lg">
                 <Link href="/contact">
-                  Start a project <ArrowRight className="h-[18px] w-[18px]" />
+                  Contact us <ArrowRight className="h-[18px] w-[18px]" />
                 </Link>
               </Button>
               <Button asChild variant="ghost" size="lg">
-                <Link href="/work">See our work</Link>
+                <Link href="/services">See our services</Link>
               </Button>
             </div>
           </Reveal>
+          {/* HERO STATS — commented out for 10DLC compliance
           <Reveal delay={0.28}>
             <div className="grid grid-cols-2 gap-8 border-t border-line pt-8 sm:grid-cols-4">
               <HeroStat value={120} suffix="+" label="Projects shipped" />
@@ -188,10 +191,11 @@ export default function Home() {
               <HeroStat value={99.9} suffix="%" decimals={1} label="Uptime SLA" />
             </div>
           </Reveal>
+          */}
         </div>
       </section>
 
-      {/* LOGOS STRIP */}
+      {/* LOGOS STRIP — commented out for 10DLC compliance
       <section className="border-y border-line py-14">
         <div className="container">
           <div className="mb-8 text-center font-mono text-[11px] uppercase tracking-[2px] text-ink-3">
@@ -207,23 +211,15 @@ export default function Home() {
           </div>
         </div>
       </section>
+      */}
 
       {/* SERVICES */}
       <section className="py-28">
         <div className="container">
-          <div className="mb-16 grid grid-cols-1 items-end gap-6 lg:grid-cols-2 lg:gap-16">
+          <div className="mb-16">
             <Reveal>
               <Eyebrow className="mb-4">01 · Capabilities</Eyebrow>
-              <h2 className="h1">
-                A full-stack partner for the entire transformation journey.
-              </h2>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <p className="lede lg:ml-auto lg:max-w-[460px]">
-                From strategy to engineering to deployment — one team, one
-                shared standard. We embed deeply, ship rigorously, and stay
-                accountable to outcomes.
-              </p>
+              <h2 className="h1">What We Do</h2>
             </Reveal>
           </div>
 
@@ -254,30 +250,15 @@ export default function Home() {
                 <div>
                   <Eyebrow className="mb-4">02 · Featured capability</Eyebrow>
                   <h2 className="h1 mb-6">
-                    AI you can <span className="accent-text">actually deploy.</span>
+                    AI That Works in Production
                   </h2>
                   <p className="lede mb-8">
-                    We move past demos. Sunshineone ships production AI systems
-                    with evals, guardrails, observability, and cost controls —
-                    so the value compounds instead of degrading on contact with
-                    real users.
+                    A lot of AI projects look great in a demo and fall apart
+                    with real users. We build systems with proper testing,
+                    monitoring, and cost controls so they keep working after
+                    launch.
                   </p>
-                  <ul className="mb-9 space-y-3.5">
-                    {[
-                      "Retrieval-augmented generation with grounded sources",
-                      "Multi-agent orchestration with deterministic fallbacks",
-                      "Continuous evals, version pinning, and rollout gates",
-                      "Per-tenant cost telemetry & budget enforcement",
-                    ].map((feature) => (
-                      <li
-                        key={feature}
-                        className="flex items-start gap-3 text-[15px] text-ink-2"
-                      >
-                        <Check className="mt-0.5 h-5 w-5 shrink-0 text-brand-cyan" />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  {/* Bullet list removed for 10DLC compliance */}
                   <Button asChild>
                     <Link href="/services">
                       Explore AI services <ArrowRight className="h-[18px] w-[18px]" />
@@ -290,7 +271,7 @@ export default function Home() {
                     <div className="text-muted"># deploy intelligent workflow</div>
                     <div>
                       <span className="text-brand-cyan">$</span> sunshineone deploy agent{" "}
-                      <span className="text-success">&quot;intake-triage&quot;</span>
+                      <span className="text-success">&quot;document-summarizer&quot;</span>
                     </div>
                     <div className="text-ink-3">
                       → Building eval suite <span className="text-success">✓</span>
@@ -323,16 +304,10 @@ export default function Home() {
       {/* PROCESS */}
       <section className="py-28">
         <div className="container">
-          <div className="mb-16 grid grid-cols-1 items-end gap-6 lg:grid-cols-2 lg:gap-16">
+          <div className="mb-16">
             <Reveal>
               <Eyebrow className="mb-4">03 · How we engage</Eyebrow>
-              <h2 className="h1">A clear path from problem to production.</h2>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <p className="lede lg:ml-auto lg:max-w-[460px]">
-                No black-box agency theatre. You get a senior team, transparent
-                milestones, and shippable progress every two weeks.
-              </p>
+              <h2 className="h1">How We Work</h2>
             </Reveal>
           </div>
 
@@ -354,7 +329,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* STATS */}
+      {/* STATS — commented out for 10DLC compliance
       <section className="py-20">
         <div className="container">
           <Reveal>
@@ -367,8 +342,9 @@ export default function Home() {
           </Reveal>
         </div>
       </section>
+      */}
 
-      {/* CASE STUDIES */}
+      {/* CASE STUDIES — commented out for 10DLC compliance
       <section className="py-28">
         <div className="container">
           <div className="mb-16 grid grid-cols-1 items-end gap-6 lg:grid-cols-2 lg:gap-16">
@@ -386,7 +362,6 @@ export default function Home() {
 
           <Reveal>
             <div className="grid grid-cols-1 gap-5 lg:grid-cols-[1.4fr_1fr]">
-              {/* Featured */}
               <Link
                 href="/work"
                 className="group relative flex min-h-[480px] flex-col justify-between overflow-hidden rounded-xl border border-line bg-gradient-to-b from-[#0F1F38] to-[#051026] p-10 transition-all hover:-translate-y-0.5 hover:border-line-strong lg:row-span-2 lg:min-h-[780px]"
@@ -415,7 +390,6 @@ export default function Home() {
                 </div>
               </Link>
 
-              {/* Two compact */}
               <Link
                 href="/work"
                 className="group flex min-h-[280px] flex-col justify-between overflow-hidden rounded-xl border border-line bg-white/[0.025] p-10 transition-all hover:-translate-y-0.5 hover:border-line-strong"
@@ -463,6 +437,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      */}
 
       {/* TECH STACK */}
       <section className="py-28">
@@ -488,7 +463,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* INDUSTRIES */}
+      {/* INDUSTRIES — commented out for 10DLC compliance
       <section className="py-28">
         <div className="container">
           <div className="mb-16 grid grid-cols-1 items-end gap-6 lg:grid-cols-2 lg:gap-16">
@@ -523,8 +498,9 @@ export default function Home() {
           </Reveal>
         </div>
       </section>
+      */}
 
-      {/* TESTIMONIALS */}
+      {/* TESTIMONIALS — commented out for 10DLC compliance
       <section className="py-28">
         <div className="container">
           <Reveal>
@@ -560,6 +536,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      */}
 
       {/* FAQ */}
       <section className="py-28">
@@ -585,9 +562,10 @@ export default function Home() {
 
       {/* FINAL CTA */}
       <FinalCTA
-        title={<>Let&apos;s build something that <span className="accent-text">compounds.</span></>}
-        description="Tell us about the problem you're solving. We'll send a senior engineer to your first call — not a salesperson."
-        secondary={{ href: "/work", label: "See our work" }}
+        title="Get In Touch"
+        description="Tell us about your project. A senior engineer will get back to you within one business day."
+        primary={{ href: "/contact", label: "Contact us" }}
+        secondary={{ href: "/services", label: "See our services" }}
       />
     </>
   );
